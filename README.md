@@ -25,14 +25,43 @@ npm install
 cdk bootstrap
 ```
 
-
-4. Deploy the AWS Elemental MediaConnect Scheduler using:
+4. Edit the configuration JSON file located in the config directory:
 
 ```sh
-//Specify which MediaConncet Fow you want the CDK app to deploy the scheduler, example below:
-//cdk deploy -c mediaConnectFlowArn=arn:aws:mediaconnect:us-east-1:012345678910:flow:flowID:flowName
+nano ./config/config.json
+```
 
-cdk deploy -c mediaConnectFlowArn==<MEDIACONNECT-FLOW-ARN>
+5. Update the values to the cooresponding `FlowArn`, `StartFlowSchedules`, and `StopFlowSchedules` keys in the config.json file. 
+
+
+```sh
+{
+  "Schedules": [
+    {
+      "FlowArn": "arn:aws:mediaconnect:us-east-1:<ACCOUNT-NUMBER>:flow:<FLOW-ID>:<FLOW-NAME>",
+      "StartFlowSchedules": ["0 17 * * ? *", "0 9 * * ? *"],
+      "StopFlowSchedules": ["59 23 * * ? *", "59 15 * * ? *"] 
+    },
+    {
+      "FlowArn": "arn:aws:mediaconnect:us-east-1:<ACCOUNT-NUMBER>:flow:<FLOW-ID>:<FLOW-NAME>",
+      "StartFlowSchedules": ["0 18 * * ? *"],
+      "StopFlowSchedules": ["59 23 * * ? *"]
+    },
+    {
+      "FlowArn": "",
+      "StartFlowSchedules": [],
+      "StopFlowSchedules": []
+    }
+  ]
+}
+```
+
+- Save and close the config.json file using the keyboard shortcut (Ctrl-x).
+
+6. Deploy the AWS Elemental MediaConnect Scheduler using:
+
+```sh
+cdk deploy --all
 ```
 
 The CDK outputs CloudFormation templates to the `cdk.out` folder. By running the following command you will be able to access these templates at `CreateFlow.template.json`

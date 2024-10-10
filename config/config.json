@@ -1,0 +1,19 @@
+{
+  "Schedules": [
+    {
+      "FlowArn": "arn:aws:mediaconnect:us-east-1:254940861450:flow:1-CVsJXFdTXAAEUwEC-693d21a229ed:230609_flow",
+      "StartFlowSchedules": ["0 17 * * ? *", "0 9 * * ? *"],
+      "StopFlowSchedules": ["59 23 * * ? *", "59 15 * * ? *"]
+    },
+    {
+      "FlowArn": "arn:aws:mediaconnect:us-east-1:254940861450:flow:1-DQMEDVNTVgcDUFYA-1804c166237a:230911_srt",
+      "StartFlowSchedules": ["0 18 * * ? *"],
+      "StopFlowSchedules": ["59 23 * * ? *"]
+    },
+    {
+      "FlowArn": "",
+      "StartFlowSchedules": [],
+      "StopFlowSchedules": []
+    }
+  ]
+}
